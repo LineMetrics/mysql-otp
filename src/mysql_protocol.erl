@@ -74,7 +74,7 @@ quit(TcpModule, Socket) ->
 -spec ping(atom(), term()) -> #ok{}.
 ping(TcpModule, Socket) ->
    Query = <<"SELECT 1;">>,
-   query(Query, TcpModule, Socket, 3000).
+   query(Query, TcpModule, Socket, 4000).
 
 -spec query(Query :: iodata(), atom(), term(), timeout()) ->
     {ok, [#ok{} | #resultset{} | #error{}]} | {error, timeout}.
