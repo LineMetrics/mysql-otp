@@ -73,9 +73,8 @@ quit(TcpModule, Socket) ->
 
 -spec ping(atom(), term()) -> #ok{}.
 ping(TcpModule, Socket) ->
-    {ok, SeqNum1} = send_packet(TcpModule, Socket, <<?COM_PING>>, 0),
-    {ok, OkPacket, _SeqNum2} = recv_packet(TcpModule, Socket, SeqNum1),
-    parse_ok_packet(OkPacket).
+   Query = <<"SELECT 1;">>,
+   query(Query, TcpModule, Socket, 3000).
 
 -spec query(Query :: iodata(), atom(), term(), timeout()) ->
     {ok, [#ok{} | #resultset{} | #error{}]} | {error, timeout}.
