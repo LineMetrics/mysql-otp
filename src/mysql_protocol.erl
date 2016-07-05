@@ -75,7 +75,7 @@ quit(TcpModule, Socket) ->
 ping(TcpModule, Socket) ->
    Query = <<"SELECT 1;">>,
    Res = query(Query, TcpModule, Socket, 4000),
-   lager:notice("Ping-Result: ~p",[Res]).
+   io:format("~nPing-Result: ~p ~n",[Res]).
 
 -spec query(Query :: iodata(), atom(), term(), timeout()) ->
     {ok, [#ok{} | #resultset{} | #error{}]} | {error, timeout}.
